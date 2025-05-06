@@ -21,8 +21,10 @@
                 alert('請輸入 Bearer Token');
                 return;
             }
-
-            const url = 'https://api.line.me/v2/bot/message/quota/consumption';
+            
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const apiUrl = 'https://api.line.me/v2/bot/message/quota/consumption';
+            const url = proxyUrl + apiUrl;
 
             fetch(url, {
                 method: 'GET',
