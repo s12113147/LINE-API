@@ -34,7 +34,13 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                // 嘗試提取並顯示 totalUsage 欄位
+                const totalUsage = data.totalUsage;
+                if (totalUsage !== undefined) {
+                    document.getElementById('response').textContent = `Total Usage: ${totalUsage}`;
+                } else {
+                    document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                }
             })
             .catch(error => {
                 document.getElementById('response').textContent = '錯誤: ' + error.message;
